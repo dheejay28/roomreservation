@@ -54,3 +54,46 @@ button:hover {
     margin: 0 auto; /* Center the logo */
     display: block; /* Centering with margin auto */
 }
+
+/* Existing styles... */
+
+body.dark-mode {
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+.container {
+    background-color: #fff; /* Light background */
+}
+
+.container.dark-mode {
+    background-color: #444; /* Dark background */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #007BFF;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+body.dark-mode th {
+    background-color: #0056b3;
+}
+
+body.dark-mode td {
+    background-color: #555;
+}
