@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Reservation System Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Room Reservation System</h1>
+        <div class="logo">
+            <img src="logo.png" alt="Logo" />
+        </div>
+
+        <div id="dateTime" class="center"></div>
+        
+        <!-- Dashboard buttons -->
+        <div class="buttons">
+            <a href="reserve_room.html"><button>Reserve Room</button></a>
+            <a href="return_room.html"><button>Return Room</button></a>
+            <a href="add_room.html"><button>Add Room (Admin)</button></a>
+            <a href="admin_login.html"><button>Admin Login</button></a>
+        </div>
+    </div>
+
+    <script>
+        // Display current date and time
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('dateTime').textContent = now.toLocaleString();
+        }
+        setInterval(updateDateTime, 1000);  // Update every second
+        updateDateTime();
+    </script>
+</body>
+</html>
