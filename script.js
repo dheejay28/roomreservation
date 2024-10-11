@@ -32,4 +32,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const reservationCode = document.getElementById('reservationCode').value;
 
         if (rooms[roomNumber] === "Occupied" && reservations[roomNumber].code === reservationCode) {
-            rooms[roomNumber
+            rooms[roomNumber] = "Vacant";
+            delete reservations[roomNumber];
+            alert('Room returned successfully!');
+        } else {
+            alert('Invalid reservation code or room is not occupied.');
+        }
+    });
+
+    // Handle Adding Room
+    document.getElementById('addRoomForm')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const newRoomNumber = document.getElementById('newRoomNumber').value;
+        if (!rooms[newRoomNumber]) {
+            rooms[newRoomNumber] = "Vacant";
+            alert(`Room ${newRoomNumber} added.`);
+        } else {
+            alert('Room already exists.');
+        }
+    });
+
+    // Admin Login (Example of Simple Check)
+    document.getElementById('adminLoginForm')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const adminUsername = document.getElementById('adminUsername').value;
+        const adminPassword = document.getElementById('adminPassword').value;
+
+        if (adminUsername === 'admin' && adminPassword === 'password123') {
+            alert('Login successful!');
+            window.location.href = 'add_room.html';
+        } else {
+            alert('Invalid username or password.');
+        }
+    });
+});
