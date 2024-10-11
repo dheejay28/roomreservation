@@ -3,56 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room Reservation Dashboard</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
-        <img src="logo.png" alt="Logo"/>
-        <h1>Room Reservation System</h1>
-        <div class="date-time" id="dateTime"></div>
-    </div>
-    
-    <div class="dashboard">
-        <div class="room-section">
-            <h2>Available Rooms</h2>
-            <div class="room">IT Room 101</div>
-            <div class="room">IT Room 102</div>
-            <div class="room">IT Room 103</div>
-            <div class="room">IT Room 104</div>
-            <div class="room">IT Lab 201</div>
-            <div class="room">IT Lab 204</div>
-            <div class="room">IT Room 301</div>
-            <div class="room">IT Room 302</div>
-            <div class="room">IT Room 303</div>
+    <div class="container">
+        <div class="admin-login">
+            <h2>Admin Login</h2>
+            <form id="adminLoginForm">
+                <label for="adminUsername">Username:</label>
+                <input type="text" id="adminUsername" required>
+                <label for="adminPassword">Password:</label>
+                <input type="password" id="adminPassword" required>
+                <button type="submit">Login</button>
+                <button type="button" onclick="window.location.href='create_account.html'">Signup</button>
+            </form>
         </div>
 
-        <div class="room-section">
-            <h2>Occupied Rooms</h2>
-            <div class="room occupied">IT Room 101</div>
-            <div class="room occupied">IT Room 102</div>
-            <div class="room occupied">IT Room 103</div>
-            <div class="room occupied">IT Room 104</div>
+        <div class="dashboard-header">
+            <img src="logo.png" alt="Logo" class="logo">
+            <h1>DASHBOARD</h1>
+            <p id="dateTime"></p>
+        </div>
+
+        <div class="rooms-container">
+            <div class="available-rooms">
+                <h2>Available Rooms</h2>
+                <div class="room" id="room101">IT Room 101</div>
+                <div class="room" id="room102">IT Room 102</div>
+                <div class="room" id="room103">IT Room 103</div>
+                <div class="room" id="room104">IT Room 104</div>
+                <div class="room" id="room201">IT Lab 201</div>
+                <div class="room" id="room204">IT Lab 204</div>
+                <div class="room" id="room301">IT Room 301</div>
+                <div class="room" id="room302">IT Room 302</div>
+                <div class="room" id="room303">IT Room 303</div>
+                <button onclick="window.location.href='add_room.html'">Add Room</button>
+            </div>
+
+            <div class="occupied-rooms">
+                <h2>Occupied Rooms</h2>
+                <div class="room" id="occupiedRoom1">IT Room 101</div>
+                <div class="room" id="occupiedRoom2">IT Room 102</div>
+                <div class="room" id="occupiedRoom3">IT Room 103</div>
+                <div class="room" id="occupiedRoom4">IT Room 104</div>
+                <div class="room" id="occupiedRoom5">IT Lab 201</div>
+                <div class="room" id="occupiedRoom6">IT Room 301</div>
+                <button onclick="window.location.href='return_room.html'">Return Room</button>
+            </div>
         </div>
     </div>
 
-    <div class="button-container">
-        <button onclick="window.location.href='add_room.html'">Add Room</button>
-        <button onclick="window.location.href='reserve_room.html'">Reserve Room</button>
-        <button onclick="window.location.href='return_room.html'">Return Room</button>
-        <button onclick="window.location.href='admin_login.html'">Admin Login</button>
-    </div>
-
-    <script>
-        // Display current date and time
-        function updateDateTime() {
-            const now = new Date();
-            const options = { hour: '2-digit', minute: '2-digit', hour12: true, year: 'numeric', month: 'long', day: 'numeric' };
-            const dateTimeString = now.toLocaleString('en-US', options);
-            document.getElementById('dateTime').textContent = dateTimeString;
-        }
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
