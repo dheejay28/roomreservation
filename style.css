@@ -1,115 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room Reservation</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="reservation-form">
-        <h1>Reserve a Room</h1>
-        <form id="reservationForm">
-            <!-- Dropdown for selecting room -->
-            <label for="roomSelect">Select Room:</label>
-            <select id="roomSelect" required>
-                <option value="">-- Select Room --</option>
-                <option value="IT Room 101">IT Room 101</option>
-                <option value="IT Room 102">IT Room 102</option>
-                <option value="IT Room 103">IT Room 103</option>
-                <option value="IT Room 104">IT Room 104</option>
-                <option value="IT Lab 201">IT Lab 201</option>
-                <option value="IT Lab 204">IT Lab 204</option>
-                <option value="IT Room 301">IT Room 301</option>
-                <option value="IT Room 302">IT Room 302</option>
-                <option value="IT Room 303">IT Room 303</option>
-            </select><br><br>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
 
-            <!-- Input field for Section (group using the room) -->
-            <label for="section">Section:</label>
-            <input type="text" id="section" placeholder="Enter Section" required><br><br>
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
 
-            <!-- Dropdown for start time -->
-            <label for="startTime">Start Time:</label>
-            <select id="startTime" required>
-                <option value="">-- Select Start Time --</option>
-                <option value="8:00 AM">8:00 AM</option>
-                <option value="9:00 AM">9:00 AM</option>
-                <option value="10:00 AM">10:00 AM</option>
-                <option value="11:00 AM">11:00 AM</option>
-                <option value="12:00 PM">12:00 PM</option>
-                <option value="1:00 PM">1:00 PM</option>
-                <option value="2:00 PM">2:00 PM</option>
-                <option value="3:00 PM">3:00 PM</option>
-                <option value="4:00 PM">4:00 PM</option>
-            </select><br><br>
+h1, h2 {
+    color: #333;
+}
 
-            <!-- Dropdown for end time -->
-            <label for="endTime">End Time:</label>
-            <select id="endTime" required>
-                <option value="">-- Select End Time --</option>
-                <option value="9:00 AM">9:00 AM</option>
-                <option value="10:00 AM">10:00 AM</option>
-                <option value="11:00 AM">11:00 AM</option>
-                <option value="12:00 PM">12:00 PM</option>
-                <option value="1:00 PM">1:00 PM</option>
-                <option value="2:00 PM">2:00 PM</option>
-                <option value="3:00 PM">3:00 PM</option>
-                <option value="4:00 PM">4:00 PM</option>
-                <option value="5:00 PM">5:00 PM</option>
-            </select><br><br>
+label {
+    display: block;
+    margin: 5px 0;
+}
 
-            <!-- Input field for the date -->
-            <label for="reservationDate">Date:</label>
-            <input type="date" id="reservationDate" required><br><br>
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
-            <!-- Submit button for reservation -->
-            <button type="submit">Reserve Room</button>
-        </form>
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        <!-- Display the generated reservation code here -->
-        <div id="reservationCodeDisplay"></div>
-    </div>
+button:hover {
+    background-color: #0056b3;
+}
 
-    <script>
-        document.getElementById('reservationForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            // Get the selected values from the form
-            const room = document.getElementById('roomSelect').value;
-            const section = document.getElementById('section').value;
-            const startTime = document.getElementById('startTime').value;
-            const endTime = document.getElementById('endTime').value;
-            const date = document.getElementById('reservationDate').value;
-
-            // Generate a unique reservation code (could be more sophisticated)
-            const reservationCode = 'RES-' + Math.floor(Math.random() * 1000000);
-
-            // Display the reservation code to the user
-            document.getElementById('reservationCodeDisplay').innerHTML = `
-                <h3>Reservation Successful!</h3>
-                <p>Room: ${room}</p>
-                <p>Section: ${section}</p>
-                <p>Time: ${startTime} - ${endTime}</p>
-                <p>Date: ${date}</p>
-                <h4>Your Reservation Code: <strong>${reservationCode}</strong></h4>
-            `;
-
-            // Store the reservation code and details in local storage (or send to backend)
-            const reservationData = {
-                room: room,
-                section: section,
-                startTime: startTime,
-                endTime: endTime,
-                date: date,
-                reservationCode: reservationCode
-            };
-
-            localStorage.setItem(reservationCode, JSON.stringify(reservationData));
-
-            // Optionally clear the form after successful reservation
-            document.getElementById('reservationForm').reset();
-        });
-    </script>
-</body>
-</html>
+.hidden {
+    display: none;
+}
+.logo {
+    width: 50px;  /* Adjust the size as needed */
+    height: 50px; /* Adjust the size as needed */
+    object-fit: cover; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the logo */
+    display: block; /* Centering with margin auto */
+}
