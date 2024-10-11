@@ -7,81 +7,52 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="admin-login">
-        <form id="adminLoginForm">
-            <label>Admin</label>
-            <input type="text" id="adminUsername" placeholder="Username" required><br>
-            <input type="password" id="adminPassword" placeholder="Password" required><br>
-            <button type="button" onclick="location.href='create_account.html'">Signup</button>
-            <button type="submit">Login</button>
-        </form>
-    </div>
-
     <div class="header">
-        <img src="path-to-logo.png" alt="Logo" class="logo">
-        <div class="datetime">
-            <p id="currentTime"></p>
-            <p id="currentDate"></p>
+        <img src="logo.png" alt="Logo"/>
+        <h1>Room Reservation System</h1>
+        <div class="date-time" id="dateTime"></div>
+    </div>
+    
+    <div class="dashboard">
+        <div class="room-section">
+            <h2>Available Rooms</h2>
+            <div class="room">IT Room 101</div>
+            <div class="room">IT Room 102</div>
+            <div class="room">IT Room 103</div>
+            <div class="room">IT Room 104</div>
+            <div class="room">IT Lab 201</div>
+            <div class="room">IT Lab 204</div>
+            <div class="room">IT Room 301</div>
+            <div class="room">IT Room 302</div>
+            <div class="room">IT Room 303</div>
+        </div>
+
+        <div class="room-section">
+            <h2>Occupied Rooms</h2>
+            <div class="room occupied">IT Room 101</div>
+            <div class="room occupied">IT Room 102</div>
+            <div class="room occupied">IT Room 103</div>
+            <div class="room occupied">IT Room 104</div>
         </div>
     </div>
 
-    <h1 class="dashboard-title">DASHBOARD</h1>
-
-    <div class="room-sections">
-        <div class="available-rooms">
-            <h2>Available Rooms</h2>
-            <div class="room-list" id="availableRoomList">
-                <!-- Rooms will be dynamically loaded here -->
-            </div>
-            <button onclick="location.href='addroom.html'">Add Room</button>
-        </div>
-
-        <div class="occupied-rooms">
-            <h2>Occupied Rooms</h2>
-            <div class="room-list" id="occupiedRoomList">
-                <!-- Rooms will be dynamically loaded here -->
-            </div>
-            <button onclick="location.href='reserveroom.html'">Reserve Room</button>
-            <button onclick="location.href='returnroom.html'">Return Room</button>
-        </div>
+    <div class="button-container">
+        <button onclick="window.location.href='add_room.html'">Add Room</button>
+        <button onclick="window.location.href='reserve_room.html'">Reserve Room</button>
+        <button onclick="window.location.href='return_room.html'">Return Room</button>
+        <button onclick="window.location.href='admin_login.html'">Admin Login</button>
     </div>
 
     <script>
-        // JavaScript for current time and date
-        function updateTimeAndDate() {
+        // Display current date and time
+        function updateDateTime() {
             const now = new Date();
-            document.getElementById('currentTime').textContent = now.toLocaleTimeString();
-            document.getElementById('currentDate').textContent = now.toLocaleDateString();
+            const options = { hour: '2-digit', minute: '2-digit', hour12: true, year: 'numeric', month: 'long', day: 'numeric' };
+            const dateTimeString = now.toLocaleString('en-US', options);
+            document.getElementById('dateTime').textContent = dateTimeString;
         }
-        setInterval(updateTimeAndDate, 1000); // Update every second
-
-        // Simulated rooms data (this can later be tied to a backend)
-        const rooms = {
-            "101": "Vacant", "102": "Occupied", "103": "Vacant", "104": "Occupied",
-            "105": "Vacant", "106": "Vacant", "107": "Vacant", "108": "Occupied"
-        };
-
-        // Load available rooms
-        const availableRoomList = document.getElementById('availableRoomList');
-        for (const room in rooms) {
-            if (rooms[room] === "Vacant") {
-                const roomDiv = document.createElement('div');
-                roomDiv.classList.add('room');
-                roomDiv.textContent = `IT Room ${room}`;
-                availableRoomList.appendChild(roomDiv);
-            }
-        }
-
-        // Load occupied rooms
-        const occupiedRoomList = document.getElementById('occupiedRoomList');
-        for (const room in rooms) {
-            if (rooms[room] === "Occupied") {
-                const roomDiv = document.createElement('div');
-                roomDiv.classList.add('room', 'occupied');
-                roomDiv.textContent = `IT Room ${room}`;
-                occupiedRoomList.appendChild(roomDiv);
-            }
-        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
     </script>
 </body>
 </html>
