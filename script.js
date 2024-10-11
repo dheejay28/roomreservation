@@ -62,6 +62,75 @@ function populateTables() {
     });
 }
 
+// Example data for requests, users, and rooms
+const requests = [
+    { type: 'Add Room', user: 'john_doe', status: 'Pending' },
+    { type: 'Create Account', user: 'jane_doe', status: 'Pending' },
+];
+
+const users = [
+    { username: 'john_doe', status: 'Active' },
+    { username: 'jane_doe', status: 'Inactive' },
+];
+
+const occupiedRooms = [
+    { number: '101', status: 'Occupied' },
+    { number: '201', status: 'Occupied' },
+];
+
+const availableRooms = [
+    { number: '102', status: 'Available' },
+    { number: '202', status: 'Available' },
+];
+
+// Populate requests and users in tables
+function populateTables() {
+    const requestTable = document.getElementById('requestTable').getElementsByTagName('tbody')[0];
+    const userTable = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+    const occupiedTable = document.getElementById('occupiedRoomTable').getElementsByTagName('tbody')[0];
+    const availableTable = document.getElementById('availableRoomTable').getElementsByTagName('tbody')[0];
+
+    requests.forEach((request) => {
+        const row = requestTable.insertRow();
+        row.innerHTML = `
+            <td>${request.type}</td>
+            <td>${request.user}</td>
+            <td>${request.status}</td>
+            <td>
+                <button onclick="approveRequest('${request.user}')">Approve</button>
+                <button onclick="deleteRequest('${request.user}')">Delete</button>
+            </td>
+        `;
+    });
+
+    users.forEach((user) => {
+        const row = userTable.insertRow();
+        row.innerHTML = `
+            <td>${user.username}</td>
+            <td>${user.status}</td>
+            <td>
+                <button onclick="toggleUserStatus('${user.username}')">Toggle Status</button>
+            </td>
+        `;
+    });
+
+    occupiedRooms.forEach((room) => {
+        const row = occupiedTable.insertRow();
+        row.innerHTML = `
+            <td>${room.number}</td>
+            <td>${room.status}</td>
+        `;
+    });
+
+    availableRooms.forEach((room) => {
+        const row = availableTable.insertRow();
+        row.innerHTML = `
+            <td>${room.number}</td>
+            <td>${room.status}</td>
+        `;
+    });
+}
+
 // Approve Request
 function approveRequest(user) {
     alert(`Request for ${user} approved.`);
