@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>Admin Dashboard</h1>
+        <div class="dropdown">
+            <button class="dropbtn">Options</button>
+            <div class="dropdown-content">
+                <a href="#" id="viewRequests">View Requests</a>
+                <a href="#" id="manageUsers">Manage Users</a>
+                <a href="#" id="approveRooms">Approve Rooms</a>
+                <a href="create_account.html">Create Account</a>
+                <a href="#" id="logout">Log Out</a>
+                <a href="#" id="profile">Profile</a>
+            </div>
+        </div>
+        <div id="requestSection">
+            <h2>Requests</h2>
+            <table id="requestTable">
+                <thead>
+                    <tr>
+                        <th>Request Type</th>
+                        <th>User</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Requests will be populated here -->
+                </tbody>
+            </table>
+        </div>
+        <div id="userManagement">
+            <h2>User Profiles</h2>
+            <table id="userTable">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- User profiles will be populated here -->
+                </tbody>
+            </table>
+        </div>
+        <button id="darkModeToggle">Toggle Dark Mode</button>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
