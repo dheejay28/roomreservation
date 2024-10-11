@@ -3,35 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room Reservation System Dashboard</title>
+    <title>Room Reservation Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Room Reservation System</h1>
-        <div class="logo">
-            <img src="logo.png" alt="Logo" />
+    <div class="admin-login">
+        <form id="adminLoginForm">
+            <label>Admin</label>
+            <input type="text" id="adminUsername" placeholder="Username" required><br>
+            <input type="password" id="adminPassword" placeholder="Password" required><br>
+            <button type="button" onclick="location.href='create_account.html'">Signup</button>
+            <button type="submit">Login</button>
+        </form>
+        <p>This will be the login for the administrator, who will accept requests for new users and new room requests.</p>
+    </div>
+
+    <div class="header">
+        <img src="path-to-logo.png" alt="Logo" class="logo">
+        <div class="datetime">
+            <p id="currentTime"></p>
+            <p id="currentDate"></p>
+        </div>
+    </div>
+
+    <h1 class="dashboard-title">DASHBOARD</h1>
+
+    <div class="room-sections">
+        <div class="available-rooms">
+            <h2>Available Rooms</h2>
+            <div class="room-list" id="availableRoomList">
+                <!-- Rooms will be dynamically loaded here -->
+            </div>
+            <button onclick="location.href='addroom.html'">Add Room</button>
         </div>
 
-        <div id="dateTime" class="center"></div>
-        
-        <!-- Dashboard buttons -->
-        <div class="buttons">
-            <a href="reserve_room.html"><button>Reserve Room</button></a>
-            <a href="return_room.html"><button>Return Room</button></a>
-            <a href="add_room.html"><button>Add Room (Admin)</button></a>
-            <a href="admin_login.html"><button>Admin Login</button></a>
+        <div class="occupied-rooms">
+            <h2>Occupied Rooms</h2>
+            <div class="room-list" id="occupiedRoomList">
+                <!-- Rooms will be dynamically loaded here -->
+            </div>
+            <button onclick="location.href='reserveroom.html'">Reserve Room</button>
+            <button onclick="location.href='returnroom.html'">Return Room</button>
         </div>
     </div>
 
     <script>
-        // Display current date and time
-        function updateDateTime() {
+        // JavaScript for current time and date
+        function updateTimeAndDate() {
             const now = new Date();
-            document.getElementById('dateTime').textContent = now.toLocaleString();
+            document.getElementById('currentTime').textContent = now.toLocaleTimeString();
+            document.getElementById('currentDate').textContent = now.toLocaleDateString();
         }
-        setInterval(updateDateTime, 1000);  // Update every second
-        updateDateTime();
+        setInterval(updateTimeAndDate, 1000); // Update every second
+
+        // Simulated rooms data (this can later be tied to a backend)
+        const rooms = {
+            "101": "Vacant", "102": "Occupied", "103": "Vacant", "104": "Occupied",
+            "105": "Vacant", "106": "Vacant", "107": "Vacant", "108": "Occupied"
+        };
+
+        // Load available rooms
+        const availableRoomList = document.getElementById('availableRoomList');
+        for (const room in rooms) {
+            if (rooms[room] === "Vacant") {
+                const roomDiv = document.createElement('div');
+                roomDiv.classList.add('room');
+                roomDiv.textContent = `IT Room ${room}`;
+                availableRoomList.appendChild(roomDiv);
+            }
+        }
+
+        // Load occupied rooms
+        const occupiedRoomList = document.getElementById('occupiedRoomList');
+        for (const room in rooms) {
+            if (rooms[room] === "Occupied") {
+                const roomDiv = document.createElement('div');
+                roomDiv.classList.add('room', 'occupied');
+                roomDiv.textContent = `IT Room ${room}`;
+                occupiedRoomList.appendChild(roomDiv);
+            }
+        }
     </script>
 </body>
 </html>
