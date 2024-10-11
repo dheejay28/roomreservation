@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
             let code = Math.random().toString(36).substring(2, 10).toUpperCase();
             rooms[roomNumber] = "Occupied";
             reservations[roomNumber] = { section, time, date, code };
-            alert(`Room reserved. Reservation code: ${code}`);
+            alert(`Room reserved successfully! Your reservation code: ${code}`);
         } else {
-            alert('Room already occupied!');
+            alert('Room is already occupied!');
         }
     });
 
@@ -46,13 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const newRoomNumber = document.getElementById('newRoomNumber').value;
         if (!rooms[newRoomNumber]) {
             rooms[newRoomNumber] = "Vacant";
-            alert(`Room ${newRoomNumber} added.`);
+            alert(`Room ${newRoomNumber} added successfully.`);
         } else {
             alert('Room already exists.');
         }
     });
 
-    // Admin Login (Example of Simple Check)
+    // Admin Login (Simple Check Example)
     document.getElementById('adminLoginForm')?.addEventListener('submit', (e) => {
         e.preventDefault();
         const adminUsername = document.getElementById('adminUsername').value;
