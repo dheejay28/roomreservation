@@ -8,13 +8,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Return a Room</h1>
-        <form id="returnForm">
-            <input type="text" id="returnRoomNumber" placeholder="Room Number" required>
-            <input type="text" id="reservationCode" placeholder="Reservation Code" required>
+        <h1>Return Room</h1>
+        <form id="returnRoomForm">
+            <label for="reservationCode">Reservation Code:</label>
+            <input type="text" id="reservationCode" required>
+
             <button type="submit">Return Room</button>
         </form>
-        <a href="index.html"><button>Back to Dashboard</button></a>
+        <div id="returnMessage" class="hidden"></div>
     </div>
 
     <script src="script.js"></script>
